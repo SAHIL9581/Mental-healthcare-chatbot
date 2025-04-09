@@ -178,26 +178,26 @@ def chatbot_response(user_input, history = []):
 
 with gr.Blocks(css="""
 body {
-    background: linear-gradient(to right, #a8e6cf, #dcedc1);  /* Shades of green */
+    background: linear-gradient(to right, #a8e6cf, #dcedc1);  
     font-family: 'Segoe UI', sans-serif;
 }
 
 h1, h2, h3 {
-    color: #ff6f61;  /* Vibrant coral */
+    color: #ff6f61;  
 }
 
 p, label {
-    color: #ff9800;  /* Bright orange */
+    color: #ff9800; 
 }
 
 .gr-button {
-    background-color: #388e3c !important;  /* Rich green */
+    background-color: #388e3c !important;  
     color: white !important;
     border-radius: 10px;
 }
 
 .gr-button:hover {
-    background-color: #1b5e20 !important;  /* Darker green */
+    background-color: #1b5e20 !important;  
 }
 """) as app:
 
