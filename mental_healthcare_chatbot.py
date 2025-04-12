@@ -97,6 +97,44 @@ if __name__ == "__main__":
 
 #create_vector_db()
 
+#Training the dataset
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trainer, TrainingArguments
+from datasets import load_dataset
+
+# Load tokenizer and model (e.g., DistilBERT for classification)
+model_name = "distilbert-base-uncased"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=2)
+
+# Load a small dataset (you can replace this with your mental health Q&A data)
+dataset = load_dataset("imdb", split='train[:1%]')
+def tokenize(batch):
+    return tokenizer(batch["text"], padding=True, truncation=True)
+
+dataset = dataset.map(tokenize, batched=True)
+dataset.set_format("torch", columns=["input_ids", "attention_mask", "label"])
+
+# Define training arguments
+training_args = TrainingArguments(
+    output_dir="./results",
+    num_train_epochs=2,
+    per_device_train_batch_size=8,
+    logging_dir='./logs',
+    logging_steps=10,
+    evaluation_strategy="no"
+)
+
+# Trainer with built-in loss logging
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=dataset
+)
+
+# Train the model
+trainer.train()
+
+
 !pip install gradio
 
 import os
