@@ -108,3 +108,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## 📄 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+Link for the Mental Health Chatbot:
+
+https://huggingface.co/spaces/Sahil9581/mental-health/blob/main/app.py
